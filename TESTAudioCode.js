@@ -41,31 +41,31 @@ function draw() {
   // the first is the length of the cycle - so the bigger the number,
   // the slower the line will shift
   // the second variable is how much it moves over the length of that cycle
-  x1 += wobble(1000, 100);
-  y1 += wobble(100, 120);
-  x2 += wobble(20, 80);
-  y2 += wobble(60, 140);
+  x1 += wobble(1000, 200);
+  y1 += wobble(100, 150);
+  x2 += wobble(20, 200);
+  y2 += wobble(60, 100);
 
   currentLine = [x1, y1, x2, y2];
   drawCurrentLine();
-  //drawPermanentLines();
+  drawPermanentLines();
   fadeSquare(0.1);
 
-  var micvol = mic.getLevel();
-  mv = map(micvol, 0, .01, 0, 10);
-  print(mv);
-
-  if (mv > 1) {
-    permanentLines.push(currentLine);
-  }
+  if (microphoneVolume() > 1) {
+      permanentLines.push(currentLine);
+    }
 }
 
-//function microphoneVolume() {
-   //let micvol = mic.getLevel();
-   //let mv = map(micvol, 0, .01, 0, 10);
-   //console.log(mv);
-   //return mv;
- //}
+function touchStarted() {
+	getAudioContext().resume();
+}
+
+function microphoneVolume() {
+   let micvol = mic.getLevel();
+   let mv = map(micvol, 0, .01, 0, 10);
+   console.log(mv);
+   return mv;
+}
 
 function incrementTime() {
   // basically this just counts up seconds from 0-59
@@ -121,9 +121,6 @@ function drawPermanentLines() {
   }
 }
 
-function touchStarted() {
-	getAudioContext().resume();
-}
 
 //function mouseMoved() {
   // you can get rid of this function once the mic stuff is working!
