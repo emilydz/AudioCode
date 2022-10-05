@@ -51,7 +51,7 @@ function draw() {
   drawPermanentLines();
   fadeSquare(0.1);
 
-  if (microphoneVolume() > 1) {
+  if (microphoneVolume() > 5) {
       permanentLines.push(currentLine);
     }
 }
@@ -89,7 +89,7 @@ function incrementTime() {
 function drawCurrentLine() {
   noFill();
   stroke(255, 0, 0);
-  strokeWeight(1);
+  strokeWeight(.25);
   line(currentLine[0], currentLine[1], currentLine[2], currentLine[3]);
 }
 
@@ -112,7 +112,7 @@ function wobble(lengthOfCycle, amplitude) {
 function drawPermanentLines() {
   noFill();
   stroke(255, 0, 0);
-  strokeWeight(1);
+  strokeWeight(.25);
   for (let i in permanentLines) {
     line(permanentLines[i][0],
         permanentLines[i][1],
