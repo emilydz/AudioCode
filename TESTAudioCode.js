@@ -51,7 +51,7 @@ function draw() {
   drawPermanentLines();
   fadeSquare(0.1);
 
-  if (microphoneVolume() > 5) {
+  if (microphoneVolume() > 15) {
       permanentLines.push(currentLine);
     }
 }
